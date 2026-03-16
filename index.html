@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BluDrop</title>
+    <meta
+      name="description"
+      content="BluDrop - Modern solutions delivered with clarity."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #020617;
+        --bg-card: rgba(15, 23, 42, 0.9);
+        --primary: #38bdf8;
+        --primary-soft: rgba(56, 189, 248, 0.2);
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --border: rgba(148, 163, 184, 0.35);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        color: var(--text);
+        background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+
+      .shell {
+        position: relative;
+        width: 100%;
+        max-width: 960px;
+        padding: 1px;
+        border-radius: 32px;
+        background: radial-gradient(circle at top left, #22d3ee, transparent 55%),
+          radial-gradient(circle at bottom right, #38bdf8, transparent 60%);
+      }
+
+      .shell::before {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        border-radius: inherit;
+        background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.5), transparent),
+          radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.2), transparent);
+        filter: blur(18px);
+        opacity: 0.35;
+        z-index: -1;
+      }
+
+      .card {
+        position: relative;
+        border-radius: 30px;
+        padding: 40px 32px 32px;
+        background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.95), #020617);
+        border: 1px solid var(--border);
+        box-shadow:
+          0 24px 80px rgba(15, 23, 42, 0.9),
+          0 0 0 1px rgba(15, 23, 42, 0.8);
+        overflow: hidden;
+      }
+
+      .blur-orbit {
+        position: absolute;
+        width: 30rem;
+        height: 30rem;
+        border-radius: 999px;
+        background: radial-gradient(circle, var(--primary-soft), transparent 60%);
+        right: -10rem;
+        top: -10rem;
+        opacity: 0.7;
+        filter: blur(6px);
+        pointer-events: none;
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+        margin-bottom: 32px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+
+      .logo {
+        width: 72px;
+        height: 72px;
+        border-radius: 26px;
+        overflow: hidden;
+        box-shadow:
+          0 14px 45px rgba(8, 47, 73, 0.9),
+          0 0 0 1px rgba(15, 23, 42, 0.95);
+        background: radial-gradient(circle at 30% 15%, #e5f3ff 0, #0ea5e9 45%, #0b1120 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+
+      .name-block {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .name {
+        font-size: clamp(1.9rem, 2.3vw, 2.3rem);
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 0.4em;
+        font-family: "Playfair Display", "PlayfairDisplay-Regular", system-ui,
+          -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .name span:first-child {
+        color: var(--text);
+      }
+
+      .name span:last-child {
+        color: var(--primary);
+      }
+
+      .tagline {
+        font-size: 0.9rem;
+        color: var(--muted);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .pill {
+        padding: 6px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.6);
+        background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.08), rgba(15, 23, 42, 0.9));
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        backdrop-filter: blur(10px);
+      }
+
+      .pill-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: #22c55e;
+        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.18);
+      }
+
+      .main {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
+        gap: 40px;
+        align-items: center;
+      }
+
+      .headline {
+        font-size: clamp(1.9rem, 2.4vw, 2.4rem);
+        line-height: 1.25;
+        margin: 0 0 14px;
+        font-family: "Playfair Display", "PlayfairDisplay-Regular", system-ui,
+          -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .headline span {
+        color: var(--primary);
+      }
+
+      .subcopy {
+        margin: 0 0 26px;
+        max-width: 430px;
+        font-size: 0.98rem;
+        color: var(--muted);
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 16px;
+        align-items: center;
+      }
+
+      .cta-primary {
+        padding: 11px 20px;
+        border-radius: 999px;
+        border: none;
+        background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+        color: #0b1120;
+        font-size: 0.92rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        box-shadow:
+          0 18px 40px rgba(8, 47, 73, 0.9),
+          0 0 0 1px rgba(15, 23, 42, 0.8);
+        transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+      }
+
+      .cta-primary span {
+        font-size: 1.15rem;
+        transform: translateY(1px);
+      }
+
+      .cta-primary:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.05);
+        box-shadow:
+          0 22px 55px rgba(8, 47, 73, 0.95),
+          0 0 0 1px rgba(15, 23, 42, 0.85);
+      }
+
+      .cta-secondary {
+        font-size: 0.86rem;
+        color: var(--muted);
+      }
+
+      .cta-secondary strong {
+        color: var(--text);
+        font-weight: 500;
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 26px;
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      .meta-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .meta-badge {
+        padding: 3px 9px;
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.55);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--muted);
+      }
+
+      .meta-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        background: rgba(148, 163, 184, 0.9);
+      }
+
+      .visual {
+        position: relative;
+        border-radius: 22px;
+        padding: 20px 18px 18px;
+        border: 1px solid rgba(148, 163, 184, 0.5);
+        background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.94));
+        overflow: hidden;
+      }
+
+      .visual-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      .visual-dots {
+        display: flex;
+        gap: 6px;
+      }
+
+      .visual-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(148, 163, 184, 0.75);
+      }
+
+      .visual-dot:nth-child(1) {
+        background: #f97373;
+      }
+      .visual-dot:nth-child(2) {
+        background: #facc15;
+      }
+      .visual-dot:nth-child(3) {
+        background: #22c55e;
+      }
+
+      .visual-label {
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-size: 0.72rem;
+      }
+
+      .visual-chip {
+        padding: 4px 9px;
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.55);
+        font-size: 0.72rem;
+      }
+
+      .visual-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      .tile {
+        position: relative;
+        border-radius: 14px;
+        padding: 12px;
+        border: 1px solid rgba(30, 64, 175, 0.65);
+        background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.2), rgba(15, 23, 42, 0.95));
+        box-shadow:
+          0 18px 40px rgba(15, 23, 42, 0.8),
+          0 0 0 1px rgba(15, 23, 42, 0.85);
+      }
+
+      .tile-label {
+        font-size: 0.72rem;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+
+      .tile-value {
+        font-size: 0.95rem;
+        font-weight: 500;
+      }
+
+      .tile-highlight {
+        color: var(--primary);
+      }
+
+      .sparkline {
+        margin-top: 8px;
+        height: 32px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, rgba(56, 189, 248, 0.05), rgba(56, 189, 248, 0.25));
+        position: relative;
+        overflow: hidden;
+      }
+
+      .sparkline-inner {
+        position: absolute;
+        inset: 4px;
+        border-radius: inherit;
+        background: radial-gradient(circle at 0 50%, rgba(56, 189, 248, 0.2), transparent 45%),
+          radial-gradient(circle at 40% 0, rgba(56, 189, 248, 0.5), transparent 55%),
+          radial-gradient(circle at 85% 80%, rgba(34, 197, 94, 0.6), transparent 55%);
+        opacity: 0.9;
+      }
+
+      .usage-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-top: 12px;
+        font-size: 0.78rem;
+        color: var(--muted);
+      }
+
+      .usage-badge {
+        padding: 3px 8px;
+        border-radius: 999px;
+        border: 1px solid rgba(56, 189, 248, 0.5);
+        color: var(--primary);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .usage-bar {
+        position: relative;
+        flex: 1;
+        height: 4px;
+        border-radius: 999px;
+        background: rgba(30, 64, 175, 0.7);
+        overflow: hidden;
+      }
+
+      .usage-fill {
+        position: absolute;
+        inset: 0;
+        width: 70%;
+        background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+      }
+
+      .footer {
+        margin-top: 28px;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        color: var(--muted);
+        text-decoration: none;
+      }
+
+      .footer-links a:hover {
+        color: var(--primary);
+      }
+
+      .footer-right {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .footer-dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 999px;
+        background: rgba(148, 163, 184, 0.9);
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 18px;
+        }
+
+        .card {
+          padding: 28px 20px 22px;
+        }
+
+        .card-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .main {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 28px;
+        }
+
+        .visual {
+          order: -1;
+        }
+
+        .footer {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 6px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <div class="card">
+        <div class="blur-orbit"></div>
+
+        <header class="card-header">
+          <div class="brand">
+            <div class="logo">
+              <img src="bludrop-logo.png" alt="BluDrop logo" />
+            </div>
+            <div class="name-block">
+              <div class="name" aria-label="BluDrop">
+                <span>Blu</span><span>Drop</span>
+              </div>
+              <div class="tagline">Designed for modern delivery teams</div>
+            </div>
+          </div>
+          <div class="pill">
+            <span class="pill-dot"></span>
+            Now accepting new projects
+          </div>
+        </header>
+
+        <main class="main">
+          <section aria-labelledby="headline">
+            <h1 id="headline" class="headline">
+              Clear, reliable experiences for a <span>connected</span> world.
+            </h1>
+            <p class="subcopy">
+              BluDrop turns complex ideas into clean, modern products. Fast, focused and
+              built for teams that care about every detail.
+            </p>
+            <div class="cta-row">
+              <button class="cta-primary" type="button">
+                Get in touch
+                <span>↗</span>
+              </button>
+              <div class="cta-secondary">
+                Or email
+                <strong>hello@bludrop.studio</strong>
+              </div>
+            </div>
+            <div class="meta" aria-label="BluDrop highlights">
+              <div class="meta-item">
+                <span class="meta-badge">Product-first</span>
+                <span>Strategy, design & engineering in one place.</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-dot"></span>
+                <span>Modern stack, cloud-native by default.</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="visual" aria-label="BluDrop snapshot">
+            <div class="visual-header">
+              <div class="visual-dots">
+                <span class="visual-dot"></span>
+                <span class="visual-dot"></span>
+                <span class="visual-dot"></span>
+              </div>
+              <div class="visual-label">BluDrop overview</div>
+              <div class="visual-chip">Live preview</div>
+            </div>
+
+            <div class="visual-grid">
+              <div class="tile">
+                <div class="tile-label">Launch window</div>
+                <div class="tile-value tile-highlight">Under 6 weeks</div>
+                <div class="sparkline">
+                  <div class="sparkline-inner"></div>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-label">Reliability</div>
+                <div class="tile-value">99.9% uptime</div>
+                <div class="usage-row">
+                  <span class="usage-badge">SLA</span>
+                  <div class="usage-bar">
+                    <div class="usage-fill"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile-label">Experience</div>
+                <div class="tile-value">Product & platform</div>
+              </div>
+              <div class="tile">
+                <div class="tile-label">Regions</div>
+                <div class="tile-value">Global-ready</div>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer class="footer">
+          <div>© <span id="year"></span> BluDrop. All rights reserved.</div>
+          <div class="footer-right">
+            <div class="footer-dot"></div>
+            <div class="footer-links" aria-label="BluDrop info links">
+              <a href="#" aria-disabled="true">Overview</a>
+              <a href="#" aria-disabled="true">Work</a>
+              <a href="#" aria-disabled="true">Contact</a>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      const yearEl = document.getElementById("year");
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear().toString();
+      }
+    </script>
+  </body>
+</html>
+
