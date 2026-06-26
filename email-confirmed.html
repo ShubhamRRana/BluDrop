@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Confirmed — BluDrop</title>
+    <meta
+      name="description"
+      content="Your BluDrop email has been confirmed. Return to the app and log in."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #020617;
+        --bg-card: rgba(15, 23, 42, 0.9);
+        --primary: #38bdf8;
+        --primary-soft: rgba(56, 189, 248, 0.2);
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --border: rgba(148, 163, 184, 0.35);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        color: var(--text);
+        background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+
+      .shell {
+        position: relative;
+        width: 100%;
+        max-width: 560px;
+        padding: 1px;
+        border-radius: 32px;
+        background: radial-gradient(circle at top left, #22d3ee, transparent 55%),
+          radial-gradient(circle at bottom right, #38bdf8, transparent 60%);
+      }
+
+      .shell::before {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        border-radius: inherit;
+        background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.5), transparent),
+          radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.2), transparent);
+        filter: blur(18px);
+        opacity: 0.35;
+        z-index: -1;
+      }
+
+      .card {
+        position: relative;
+        border-radius: 30px;
+        padding: 40px 32px 32px;
+        background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.95), #020617);
+        border: 1px solid var(--border);
+        box-shadow:
+          0 24px 80px rgba(15, 23, 42, 0.9),
+          0 0 0 1px rgba(15, 23, 42, 0.8);
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .blur-orbit {
+        position: absolute;
+        width: 24rem;
+        height: 24rem;
+        border-radius: 999px;
+        background: radial-gradient(circle, var(--primary-soft), transparent 60%);
+        right: -8rem;
+        top: -8rem;
+        opacity: 0.7;
+        filter: blur(6px);
+        pointer-events: none;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 36px;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .logo {
+        width: 56px;
+        height: 56px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow:
+          0 14px 45px rgba(8, 47, 73, 0.9),
+          0 0 0 1px rgba(15, 23, 42, 0.95);
+        background: radial-gradient(circle at 30% 15%, #e5f3ff 0, #0ea5e9 45%, #0b1120 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+
+      .name-block {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        text-align: left;
+      }
+
+      .name {
+        font-size: clamp(1.2rem, 2vw, 1.5rem);
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 0.4em;
+        font-family: "Playfair Display", "PlayfairDisplay-Regular", system-ui,
+          -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .name span:first-child {
+        color: var(--text);
+      }
+
+      .name span:last-child {
+        color: var(--primary);
+      }
+
+      .success-icon {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 24px;
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.25), rgba(15, 23, 42, 0.9));
+        border: 1px solid rgba(56, 189, 248, 0.45);
+        box-shadow: 0 0 32px rgba(56, 189, 248, 0.15);
+      }
+
+      .success-icon svg {
+        width: 32px;
+        height: 32px;
+        stroke: var(--primary);
+        fill: none;
+        stroke-width: 2.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .message {
+        margin: 0;
+        font-size: clamp(1.05rem, 2.2vw, 1.2rem);
+        line-height: 1.6;
+        color: var(--text);
+        font-weight: 500;
+        max-width: 28rem;
+        margin-inline: auto;
+      }
+
+      .footer {
+        margin-top: 36px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 18px;
+        }
+
+        .card {
+          padding: 28px 20px 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <div class="card">
+        <div class="blur-orbit"></div>
+
+        <a class="brand" href="index.html" aria-label="BluDrop home">
+          <div class="logo">
+            <img src="bludrop-logo.png" alt="BluDrop logo" />
+          </div>
+          <div class="name-block">
+            <div class="name" aria-label="BluDrop">
+              <span>BluDrop</span><span>Innovations</span>
+            </div>
+          </div>
+        </a>
+
+        <main>
+          <div class="success-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <p class="message">Email confirmed. Return to app and login.</p>
+        </main>
+
+        <footer class="footer">
+          <div>© <span id="year"></span> BluDrop. All rights reserved.</div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      const yearEl = document.getElementById("year");
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear().toString();
+      }
+    </script>
+  </body>
+</html>
