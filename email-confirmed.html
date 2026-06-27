@@ -39,7 +39,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 24px;
+        overflow-x: clip;
+        padding: max(24px, env(safe-area-inset-top))
+          max(24px, env(safe-area-inset-right))
+          max(24px, env(safe-area-inset-bottom))
+          max(24px, env(safe-area-inset-left));
       }
 
       .shell {
@@ -191,11 +195,41 @@
 
       @media (max-width: 768px) {
         body {
-          padding: 18px;
+          padding: max(18px, env(safe-area-inset-top))
+            max(18px, env(safe-area-inset-right))
+            max(18px, env(safe-area-inset-bottom))
+            max(18px, env(safe-area-inset-left));
         }
 
         .card {
           padding: 28px 20px 22px;
+        }
+
+        .brand {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        body {
+          padding: max(12px, env(safe-area-inset-top))
+            max(12px, env(safe-area-inset-right))
+            max(12px, env(safe-area-inset-bottom))
+            max(12px, env(safe-area-inset-left));
+        }
+
+        .shell {
+          border-radius: 20px;
+        }
+
+        .card {
+          padding: 20px 16px 18px;
+          border-radius: 18px;
+        }
+
+        .message {
+          font-size: clamp(0.95rem, 4vw, 1.05rem);
         }
       }
     </style>
