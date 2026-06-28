@@ -6,706 +6,608 @@
     <title>BluDrop</title>
     <meta
       name="description"
-      content="BluDrop - Modern solutions delivered with clarity."
+      content="BluDrop - a small studio for websites and apps that earn their keep."
     />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#020617" />
+    <meta name="theme-color" content="#0E1217" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Hanken+Grotesk:wght@300;400;500;600;700&family=Instrument+Sans:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <style>
-      :root {
-        --bg: #020617;
-        --bg-card: rgba(15, 23, 42, 0.9);
-        --primary: #38bdf8;
-        --primary-soft: rgba(56, 189, 248, 0.2);
-        --text: #e5e7eb;
-        --muted: #9ca3af;
-        --border: rgba(148, 163, 184, 0.35);
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
+      html { scroll-behavior: smooth; }
+      * { box-sizing: border-box; }
       body {
         margin: 0;
-        min-height: 100vh;
-        font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", sans-serif;
-        color: var(--text);
-        background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
+        background: #0E1217;
+        font-family: "Hanken Grotesk", sans-serif;
+        color: #E8EBEF;
+        -webkit-font-smoothing: antialiased;
+      }
+      ::selection { background: #6BA8FF; color: #0E1217; }
+      a { color: inherit; text-decoration: none; }
+
+      .wrap { max-width: 1280px; margin: 0 auto; }
+
+      /* ===== NAV ===== */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(14, 18, 23, 0.82);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid #1C232B;
+      }
+      .nav {
+        padding: 18px 56px;
         display: flex;
         align-items: center;
-        justify-content: center;
-        overflow-x: clip;
-        padding: max(24px, env(safe-area-inset-top))
-          max(24px, env(safe-area-inset-right))
-          max(24px, env(safe-area-inset-bottom))
-          max(24px, env(safe-area-inset-left));
+        justify-content: space-between;
       }
-
-      .shell {
-        position: relative;
-        width: 100%;
-        max-width: 960px;
-        padding: 1px;
-        border-radius: 32px;
-        background: radial-gradient(circle at top left, #22d3ee, transparent 55%),
-          radial-gradient(circle at bottom right, #38bdf8, transparent 60%);
+      .brand-logo {
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-weight: 700;
+        font-size: 22px;
+        letter-spacing: -0.02em;
+        color: #E8EBEF;
       }
-
-      .shell::before {
-        content: "";
-        position: absolute;
-        inset: -2px;
-        border-radius: inherit;
-        background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.5), transparent),
-          radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.2), transparent);
-        filter: blur(18px);
-        opacity: 0.35;
-        z-index: -1;
+      .brand-logo .dot { color: #6BA8FF; }
+      .nav-links {
+        display: flex;
+        gap: 34px;
+        align-items: center;
+        font-size: 14px;
+        font-weight: 500;
+        color: #9AA3AE;
       }
-
-      .card {
-        position: relative;
-        border-radius: 30px;
-        padding: 40px 32px 32px;
-        background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.95), #020617);
-        border: 1px solid var(--border);
-        box-shadow:
-          0 24px 80px rgba(15, 23, 42, 0.9),
-          0 0 0 1px rgba(15, 23, 42, 0.8);
-        overflow: hidden;
-      }
-
-      .blur-orbit {
-        position: absolute;
-        width: 30rem;
-        height: 30rem;
+      .nav-links a { color: #9AA3AE; transition: color 0.18s ease; }
+      .nav-links a:hover { color: #E8EBEF; }
+      .nav-cta {
+        font-family: "Instrument Sans", sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        border: 1px solid #313945;
+        color: #E8EBEF;
+        padding: 9px 18px;
         border-radius: 999px;
-        background: radial-gradient(circle, var(--primary-soft), transparent 60%);
-        right: -10rem;
-        top: -10rem;
-        opacity: 0.7;
-        filter: blur(6px);
-        pointer-events: none;
+        white-space: nowrap;
+        transition: border-color 0.18s ease, color 0.18s ease;
       }
+      .nav-cta:hover { border-color: #6BA8FF; color: #6BA8FF; }
 
-      .card-header {
+      /* ===== HERO ===== */
+      .hero { padding: 64px 56px 0; }
+      .hero-meta {
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        gap: 24px;
-        margin-bottom: 32px;
+        align-items: baseline;
+        font-family: "Instrument Sans", sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #8A93A0;
+        margin-bottom: 20px;
       }
-
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 18px;
-      }
-
-      .logo {
-        width: 72px;
-        height: 72px;
-        border-radius: 26px;
-        overflow: hidden;
-        box-shadow:
-          0 14px 45px rgba(8, 47, 73, 0.9),
-          0 0 0 1px rgba(15, 23, 42, 0.95);
-        background: radial-gradient(circle at 30% 15%, #e5f3ff 0, #0ea5e9 45%, #0b1120 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .logo img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
+      .hero-card {
         display: block;
-      }
-
-      .name-block {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-      }
-
-      .name {
-        font-size: clamp(1.9rem, 2.3vw, 2.3rem);
-        font-weight: 600;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        display: flex;
-        align-items: center;
-        gap: 0.4em;
-        font-family: "Playfair Display", "PlayfairDisplay-Regular", system-ui,
-          -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      }
-
-      .name span:first-child {
-        color: var(--text);
-      }
-
-      .name span:last-child {
-        color: var(--primary);
-      }
-
-      .tagline {
-        font-size: 0.9rem;
-        color: var(--muted);
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-      }
-
-      .pill {
-        padding: 6px 12px;
-        border-radius: 999px;
-        border: 1px solid rgba(148, 163, 184, 0.6);
-        background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.08), rgba(15, 23, 42, 0.9));
-        font-size: 0.78rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--muted);
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        backdrop-filter: blur(10px);
-      }
-
-      .pill-dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 999px;
-        background: #22c55e;
-        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.18);
-      }
-
-      .main {
-        display: grid;
-        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
-        gap: 40px;
-        align-items: center;
-        min-width: 0;
-      }
-
-      .headline {
-        font-size: clamp(1.9rem, 2.4vw, 2.4rem);
-        line-height: 1.25;
-        margin: 0 0 14px;
-        font-family: "Playfair Display", "PlayfairDisplay-Regular", system-ui,
-          -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      }
-
-      .headline span {
-        color: var(--primary);
-      }
-
-      .subcopy {
-        margin: 0 0 26px;
-        max-width: 430px;
-        font-size: 0.98rem;
-        color: var(--muted);
-      }
-
-      .cta-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px 16px;
-        align-items: center;
-      }
-
-      .cta-primary {
-        padding: 11px 20px;
-        border-radius: 999px;
-        border: none;
-        background: linear-gradient(135deg, #38bdf8, #0ea5e9);
-        color: #0b1120;
-        font-size: 0.92rem;
-        font-weight: 600;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        cursor: pointer;
-        text-decoration: none;
-        box-shadow:
-          0 18px 40px rgba(8, 47, 73, 0.9),
-          0 0 0 1px rgba(15, 23, 42, 0.8);
-        transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
-      }
-
-      .cta-primary span {
-        font-size: 1.15rem;
-        transform: translateY(1px);
-      }
-
-      .cta-primary:hover {
-        transform: translateY(-1px);
-        filter: brightness(1.05);
-        box-shadow:
-          0 22px 55px rgba(8, 47, 73, 0.95),
-          0 0 0 1px rgba(15, 23, 42, 0.85);
-      }
-
-      .cta-secondary {
-        font-size: 0.86rem;
-        color: var(--muted);
-      }
-
-      .cta-secondary strong {
-        color: var(--text);
-        font-weight: 500;
-      }
-
-      .meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
-        margin-top: 26px;
-        color: var(--muted);
-        font-size: 0.8rem;
-      }
-
-      .meta-item {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .meta-badge {
-        padding: 3px 9px;
-        border-radius: 999px;
-        border: 1px solid rgba(148, 163, 184, 0.55);
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 0.14em;
-        color: var(--muted);
-      }
-
-      .meta-dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 999px;
-        background: rgba(148, 163, 184, 0.9);
-      }
-
-      .visual {
-        position: relative;
-        border-radius: 22px;
-        padding: 20px 18px 18px;
-        border: 1px solid rgba(148, 163, 184, 0.5);
-        background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.94));
-        overflow: hidden;
-      }
-
-      .visual-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 16px;
-        font-size: 0.8rem;
-        color: var(--muted);
-      }
-
-      .visual-dots {
-        display: flex;
-        gap: 6px;
-      }
-
-      .visual-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 999px;
-        background: rgba(148, 163, 184, 0.75);
-      }
-
-      .visual-dot:nth-child(1) {
-        background: #f97373;
-      }
-      .visual-dot:nth-child(2) {
-        background: #facc15;
-      }
-      .visual-dot:nth-child(3) {
-        background: #22c55e;
-      }
-
-      .visual-label {
-        text-transform: uppercase;
-        letter-spacing: 0.16em;
-        font-size: 0.72rem;
-      }
-
-      .visual-chip {
-        padding: 4px 9px;
-        border-radius: 999px;
-        border: 1px solid rgba(148, 163, 184, 0.55);
-        font-size: 0.72rem;
-      }
-
-      .visual-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 10px;
-        margin-bottom: 10px;
-        min-width: 0;
-      }
-
-      .tile {
-        position: relative;
-        min-width: 0;
-        border-radius: 14px;
-        padding: 12px;
-        border: 1px solid rgba(30, 64, 175, 0.65);
-        background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.2), rgba(15, 23, 42, 0.95));
-        box-shadow:
-          0 18px 40px rgba(15, 23, 42, 0.8),
-          0 0 0 1px rgba(15, 23, 42, 0.85);
-      }
-
-      .tile-label {
-        font-size: 0.72rem;
-        color: var(--muted);
-        margin-bottom: 8px;
-      }
-
-      .tile-value {
-        font-size: 0.95rem;
-        font-weight: 500;
-      }
-
-      .tile-highlight {
-        color: var(--primary);
-      }
-
-      .sparkline {
-        margin-top: 8px;
-        height: 32px;
-        border-radius: 999px;
-        background: linear-gradient(90deg, rgba(56, 189, 248, 0.05), rgba(56, 189, 248, 0.25));
+        height: 520px;
+        border-radius: 8px;
+        background: #161C24;
         position: relative;
         overflow: hidden;
       }
-
-      .sparkline-inner {
-        position: absolute;
-        inset: 4px;
-        border-radius: inherit;
-        background: radial-gradient(circle at 0 50%, rgba(56, 189, 248, 0.2), transparent 45%),
-          radial-gradient(circle at 40% 0, rgba(56, 189, 248, 0.5), transparent 55%),
-          radial-gradient(circle at 85% 80%, rgba(34, 197, 94, 0.6), transparent 55%);
-        opacity: 0.9;
-      }
-
-      .usage-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 10px;
-        margin-top: 12px;
-        font-size: 0.78rem;
-        color: var(--muted);
-      }
-
-      .usage-badge {
-        padding: 3px 8px;
-        border-radius: 999px;
-        border: 1px solid rgba(56, 189, 248, 0.5);
-        color: var(--primary);
-        font-size: 0.72rem;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-      }
-
-      .usage-bar {
-        position: relative;
-        flex: 1;
-        height: 4px;
-        border-radius: 999px;
-        background: rgba(30, 64, 175, 0.7);
-        overflow: hidden;
-      }
-
-      .usage-fill {
+      .hero-glow {
         position: absolute;
         inset: 0;
-        width: 70%;
-        background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+        background-image: radial-gradient(circle at 80% 26%, rgba(43, 87, 230, .5), transparent 48%);
+      }
+      .hero-orb {
+        position: absolute;
+        right: 64px;
+        top: 46%;
+        transform: translateY(-50%) rotate(45deg);
+        width: 230px;
+        height: 230px;
+        background: linear-gradient(150deg, #2B57E6, #6BA8FF);
+        border-radius: 50% 50% 50% 30px;
+        box-shadow: 0 40px 90px rgba(43, 87, 230, .45);
+      }
+      .hero-copy { position: absolute; left: 48px; bottom: 44px; right: 48px; }
+      .hero-title {
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-size: 60px;
+        font-weight: 600;
+        color: #fff;
+        letter-spacing: -0.03em;
+        line-height: 0.98;
+      }
+      .hero-desc {
+        font-size: 18px;
+        color: #C3CBD6;
+        margin-top: 14px;
+        max-width: 520px;
+        line-height: 1.5;
+      }
+      .hero-link {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        margin-top: 22px;
+        font-family: "Instrument Sans", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: #6BA8FF;
       }
 
-      .footer {
-        margin-top: 28px;
+      /* ===== EDITORIAL STATEMENT ===== */
+      .statement { padding: 96px 56px; }
+      .statement-grid {
+        display: grid;
+        grid-template-columns: 1.35fr 0.85fr;
+        gap: 72px;
+        align-items: start;
+      }
+      .statement-heading {
+        margin: 0;
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-weight: 500;
+        font-size: 52px;
+        line-height: 1.06;
+        letter-spacing: -0.03em;
+        color: #E8EBEF;
+        text-wrap: balance;
+      }
+      .statement-heading .accent { color: #6BA8FF; }
+      .statement-body p {
+        margin: 0;
+        font-size: 17px;
+        line-height: 1.7;
+        color: #B7C0CC;
+      }
+      .statement-link {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        margin-top: 26px;
+        font-family: "Instrument Sans", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: #E8EBEF;
+        border-bottom: 1.5px solid #6BA8FF;
+        padding-bottom: 5px;
+        transition: color 0.18s ease;
+      }
+      .statement-link:hover { color: #6BA8FF; }
+
+      /* ===== SERVICES ===== */
+      .services { border-top: 1px solid #1C232B; border-bottom: 1px solid #1C232B; }
+      .services-label {
+        padding: 28px 0 4px;
+        font-family: "Instrument Sans", sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #8A93A0;
+        display: flex;
+        justify-content: center;
+      }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-top: 1px solid #1C232B;
+      }
+      .service-card {
+        display: block;
+        padding: 44px 40px 48px;
+        border-right: 1px solid #1C232B;
+        transition: background 0.18s ease;
+      }
+      .service-card:last-child { border-right: none; }
+      .service-card:hover { background: #12181F; }
+      .service-num { font-family: ui-monospace, monospace; font-size: 13px; color: #6BA8FF; }
+      .service-title {
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-size: 26px;
+        font-weight: 600;
+        margin-top: 18px;
+        color: #E8EBEF;
+      }
+      .service-desc { font-size: 15px; line-height: 1.6; color: #9AA3AE; margin: 12px 0 0; }
+
+      /* ===== SELECTED WORK ===== */
+      .work { padding: 96px 56px; }
+      .work-head {
         display: flex;
         justify-content: space-between;
-        gap: 12px;
-        align-items: center;
-        font-size: 0.8rem;
-        color: var(--muted);
+        align-items: baseline;
+        margin-bottom: 8px;
       }
-
-      .footer-links {
+      .work-head h2 {
+        margin: 0;
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-size: 34px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: #E8EBEF;
+      }
+      .work-all {
+        font-family: "Instrument Sans", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: #6BA8FF;
+        transition: color 0.18s ease;
+      }
+      .work-all:hover { color: #E8EBEF; }
+      .work-row {
         display: flex;
-        gap: 16px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 28px 0;
+        border-top: 1px solid #1C232B;
+        transition: padding-left 0.18s ease;
+      }
+      .work-row.first { border-top: 1px solid #2A3340; }
+      .work-row.last { border-bottom: 1px solid #1C232B; }
+      .work-row:hover { padding-left: 8px; }
+      .work-name { display: flex; gap: 30px; align-items: baseline; }
+      .work-name .num { font-family: ui-monospace, monospace; font-size: 13px; color: #6BA8FF; }
+      .work-name .title {
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-size: 30px;
+        font-weight: 500;
+        color: #E8EBEF;
+      }
+      .work-tag { display: flex; gap: 40px; align-items: center; font-size: 14px; color: #9AA3AE; }
+      .work-tag .arrow { color: #6BA8FF; }
+
+      /* ===== PROCESS ===== */
+      .process { border-top: 1px solid #1C232B; background: #0B0F14; }
+      .process-inner { padding: 88px 56px; }
+      .process-label {
+        font-family: "Instrument Sans", sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #8A93A0;
+      }
+      .process-heading {
+        margin: 14px 0 0;
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-size: 40px;
+        font-weight: 600;
+        letter-spacing: -0.025em;
+        color: #E8EBEF;
+        max-width: 680px;
+        line-height: 1.05;
+      }
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 32px;
+        margin-top: 56px;
+      }
+      .process-step .step-num {
+        font-family: ui-monospace, monospace;
+        font-size: 13px;
+        color: #6BA8FF;
+        padding-bottom: 14px;
+        border-bottom: 1px solid #2A3340;
+      }
+      .process-step .step-title {
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        margin-top: 18px;
+        color: #E8EBEF;
+      }
+      .process-step .step-desc { font-size: 14px; line-height: 1.6; color: #9AA3AE; margin: 8px 0 0; }
+
+      /* ===== STATS ===== */
+      .stats { border-top: 1px solid #1C232B; }
+      .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+      .stat { padding: 56px 40px; border-right: 1px solid #1C232B; }
+      .stat:last-child { border-right: none; }
+      .stat-value {
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-size: 56px;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+        color: #E8EBEF;
+      }
+      .stat-value .accent { color: #6BA8FF; }
+      .stat-label { font-size: 14px; color: #9AA3AE; margin-top: 6px; }
+
+      /* ===== CTA BAND ===== */
+      .cta-band { border-top: 1px solid #1C232B; }
+      .cta-inner {
+        padding: 104px 56px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 48px;
         flex-wrap: wrap;
       }
-
-      .footer-links a {
-        color: var(--muted);
-        text-decoration: none;
+      .cta-heading {
+        margin: 0;
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-size: 52px;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+        color: #E8EBEF;
+        line-height: 1.02;
+        max-width: 640px;
       }
-
-      .footer-links a:hover {
-        color: var(--primary);
-      }
-
-      .footer-right {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .footer-dot {
-        width: 4px;
-        height: 4px;
+      .cta-heading .accent { color: #6BA8FF; }
+      .cta-button {
+        font-family: "Instrument Sans", sans-serif;
+        font-size: 15px;
+        font-weight: 600;
+        background: #6BA8FF;
+        color: #0E1217;
+        padding: 16px 30px;
         border-radius: 999px;
-        background: rgba(148, 163, 184, 0.9);
+        transition: filter 0.18s ease;
+      }
+      .cta-button:hover { filter: brightness(1.08); }
+
+      /* ===== FOOTER ===== */
+      .site-footer { background: #090C10; border-top: 1px solid #1C232B; }
+      .footer-grid {
+        padding: 64px 56px 40px;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 40px;
+      }
+      .footer-brand {
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-weight: 700;
+        font-size: 24px;
+        color: #E8EBEF;
+      }
+      .footer-brand .dot { color: #6BA8FF; }
+      .footer-desc {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #8A93A0;
+        margin: 14px 0 0;
+        max-width: 300px;
+      }
+      .footer-email {
+        display: inline-block;
+        margin-top: 18px;
+        font-size: 14px;
+        color: #6BA8FF;
+      }
+      .footer-col-label {
+        font-family: "Instrument Sans", sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #6B7480;
+      }
+      .footer-col-links {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 18px;
+        font-size: 14px;
+        color: #9AA3AE;
+      }
+      .footer-col-links a:hover { color: #E8EBEF; }
+      .footer-bottom {
+        padding: 24px 56px;
+        border-top: 1px solid #1C232B;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        font-size: 13px;
+        color: #6B7480;
       }
 
-      @media (max-width: 768px) {
-        body {
-          padding: max(18px, env(safe-area-inset-top))
-            max(18px, env(safe-area-inset-right))
-            max(18px, env(safe-area-inset-bottom))
-            max(18px, env(safe-area-inset-left));
+      @media (max-width: 900px) {
+        .nav { padding: 16px 24px; }
+        .nav-links { gap: 18px; }
+        .hero, .statement, .work, .process-inner, .cta-inner, .footer-grid, .footer-bottom {
+          padding-left: 24px;
+          padding-right: 24px;
         }
-
-        .card {
-          padding: 28px 20px 22px;
-        }
-
-        .card-header {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        .logo {
-          width: 56px;
-          height: 56px;
-          border-radius: 20px;
-        }
-
-        .name {
-          flex-wrap: wrap;
-          font-size: clamp(1.5rem, 5vw, 1.9rem);
-        }
-
-        .pill {
-          align-self: stretch;
-          justify-content: center;
-        }
-
-        .main {
-          grid-template-columns: minmax(0, 1fr);
-          gap: 28px;
-        }
-
-        .visual {
-          order: -1;
-        }
-
-        .visual-header {
-          flex-wrap: wrap;
-          gap: 10px;
-        }
-
-        .visual-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .meta-item {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 6px;
-        }
-
-        .footer {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 6px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        body {
-          padding: max(12px, env(safe-area-inset-top))
-            max(12px, env(safe-area-inset-right))
-            max(12px, env(safe-area-inset-bottom))
-            max(12px, env(safe-area-inset-left));
-        }
-
-        .shell {
-          border-radius: 20px;
-        }
-
-        .card {
-          padding: 20px 16px 18px;
-          border-radius: 18px;
-        }
-
-        .headline {
-          font-size: clamp(1.5rem, 6vw, 1.9rem);
-        }
-
-        .visual-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .cta-row {
-          flex-direction: column;
-          align-items: stretch;
-        }
-
-        .cta-primary {
-          width: 100%;
-          justify-content: center;
-          min-height: 44px;
-        }
-
-        .cta-secondary {
-          text-align: center;
-          word-break: break-word;
-        }
-
-        .footer-links {
-          gap: 12px;
-        }
+        .statement-grid { grid-template-columns: 1fr; gap: 32px; }
+        .services-grid { grid-template-columns: 1fr; }
+        .service-card { border-right: none; border-bottom: 1px solid #1C232B; }
+        .process-grid { grid-template-columns: repeat(2, 1fr); }
+        .stats-grid { grid-template-columns: 1fr; }
+        .stat { border-right: none; border-bottom: 1px solid #1C232B; }
+        .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+        .hero-title, .statement-heading, .cta-heading { font-size: 38px; }
+        .hero-card { height: auto; padding: 240px 0 0; }
       }
     </style>
   </head>
   <body>
-    <div class="shell">
-      <div class="card">
-        <div class="blur-orbit"></div>
 
-        <header class="card-header">
-          <div class="brand">
-            <div class="logo">
-              <img src="bludrop-logo.png" alt="BluDrop logo" />
-            </div>
-            <div class="name-block">
-              <div class="name" aria-label="BluDrop">
-                <span>BluDrop</span><span>Innovations</span>
-              </div>
-              <div class="tagline">Designed for modern delivery teams</div>
-            </div>
-          </div>
-          <div class="pill">
-            <span class="pill-dot"></span>
-            Now accepting new projects
-          </div>
-        </header>
+    <!-- ===== NAV ===== -->
+    <header class="site-header">
+      <nav class="wrap nav">
+        <a href="index.html" class="brand-logo">BluDrop<span class="dot">.</span></a>
+        <div class="nav-links">
+          <a href="#">Work</a>
+          <a href="#">Services</a>
+          <a href="#">Studio</a>
+          <a href="contact.html">Contact</a>
+          <a href="contact.html" class="nav-cta">Start a project</a>
+        </div>
+      </nav>
+    </header>
 
-        <main class="main">
-          <section aria-labelledby="headline">
-            <h1 id="headline" class="headline">
-              Clear, reliable experiences for a <span>connected</span> world.
-            </h1>
-            <p class="subcopy">
-              BluDrop turns complex ideas into clean, modern products. Fast, focused and
-              built for teams that care about every detail.
-            </p>
-            <div class="cta-row">
-              <a class="cta-primary" href="contact.html">
-                Get in touch
-                <span>↗</span>
-              </a>
-              <div class="cta-secondary">
-                Or email
-                <strong>hello@bludrop.in</strong>
-              </div>
-            </div>
-            <div class="meta" aria-label="BluDrop highlights">
-              <div class="meta-item">
-                <span class="meta-badge">Product-first</span>
-                <span>Strategy, design & engineering in one place.</span>
-              </div>
-              <div class="meta-item">
-                <span class="meta-dot"></span>
-                <span>Modern stack, cloud-native by default.</span>
-              </div>
-            </div>
-          </section>
-
-          <section class="visual" aria-label="BluDrop snapshot">
-            <div class="visual-header">
-              <div class="visual-dots">
-                <span class="visual-dot"></span>
-                <span class="visual-dot"></span>
-                <span class="visual-dot"></span>
-              </div>
-              <div class="visual-label">BluDrop overview</div>
-              <div class="visual-chip">Live preview</div>
-            </div>
-
-            <div class="visual-grid">
-              <div class="tile">
-                <div class="tile-label">Launch window</div>
-                <div class="tile-value tile-highlight">Under 6 weeks</div>
-                <div class="sparkline">
-                  <div class="sparkline-inner"></div>
-                </div>
-              </div>
-              <div class="tile">
-                <div class="tile-label">Reliability</div>
-                <div class="tile-value">99.9% uptime</div>
-                <div class="usage-row">
-                  <span class="usage-badge">SLA</span>
-                  <div class="usage-bar">
-                    <div class="usage-fill"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="tile">
-                <div class="tile-label">Experience</div>
-                <div class="tile-value">Product & platform</div>
-              </div>
-              <div class="tile">
-                <div class="tile-label">Regions</div>
-                <div class="tile-value">Global-ready</div>
-              </div>
-            </div>
-          </section>
-        </main>
-
-        <footer class="footer">
-          <div>© <span id="year"></span> BluDrop. All rights reserved.</div>
-          <div class="footer-right">
-            <div class="footer-dot"></div>
-            <div class="footer-links" aria-label="BluDrop info links">
-              <a href="#" aria-disabled="true">Overview</a>
-              <a href="#" aria-disabled="true">Work</a>
-              <a href="privacy-policy.html">Privacy Policy</a>
-            </div>
-          </div>
-        </footer>
+    <!-- ===== HERO / FEATURED CASE ===== -->
+    <section class="wrap hero">
+      <div class="hero-meta">
+        <span>Featured — 01</span>
+        <span>Web platform · 2025</span>
       </div>
-    </div>
+      <a href="#" class="hero-card">
+        <div class="hero-glow"></div>
+        <div class="hero-orb"></div>
+        <div class="hero-copy">
+          <div class="hero-title">Northwind Bank</div>
+          <div class="hero-desc">A 1,200-page banking platform, rebuilt into one calm, legible product that customers actually understand.</div>
+          <div class="hero-link">View case study →</div>
+        </div>
+      </a>
+    </section>
 
-    <script>
-      const yearEl = document.getElementById("year");
-      if (yearEl) {
-        yearEl.textContent = new Date().getFullYear().toString();
-      }
-    </script>
+    <!-- ===== EDITORIAL STATEMENT ===== -->
+    <section class="wrap statement">
+      <div class="statement-grid">
+        <h1 class="statement-heading">We're BluDrop — a small studio for websites and apps that <span class="accent">earn their keep.</span></h1>
+        <div class="statement-body">
+          <p>Strategy, design and engineering under one roof. We take on a handful of projects at a time, so each one gets the attention it deserves — from first sketch to launch day and beyond.</p>
+          <a href="#" class="statement-link">About the studio →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section class="services">
+      <div class="wrap">
+        <div class="services-label">What we do</div>
+      </div>
+      <div class="wrap services-grid">
+        <a href="#" class="service-card">
+          <div class="service-num">01</div>
+          <div class="service-title">Web design &amp; build</div>
+          <p class="service-desc">Marketing sites, platforms and dashboards — from design system to deploy, fast and built to scale.</p>
+        </a>
+        <a href="#" class="service-card">
+          <div class="service-num">02</div>
+          <div class="service-title">Mobile apps</div>
+          <p class="service-desc">Native-feeling iOS &amp; Android products your users actually keep open — designed and shipped end to end.</p>
+        </a>
+        <a href="#" class="service-card">
+          <div class="service-num">03</div>
+          <div class="service-title">Product strategy</div>
+          <p class="service-desc">Scope, prototype and roadmap — so the right thing gets built first, and the budget goes where it counts.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== SELECTED WORK ===== -->
+    <section class="wrap work">
+      <div class="work-head">
+        <h2>Selected work</h2>
+        <a href="#" class="work-all">All work →</a>
+      </div>
+
+      <a href="#" class="work-row first">
+        <div class="work-name"><span class="num">01</span><span class="title">Northwind Bank</span></div>
+        <div class="work-tag"><span>Web platform</span><span class="arrow">↗</span></div>
+      </a>
+      <a href="#" class="work-row">
+        <div class="work-name"><span class="num">02</span><span class="title">Tabula Health</span></div>
+        <div class="work-tag"><span>iOS &amp; Android</span><span class="arrow">↗</span></div>
+      </a>
+      <a href="#" class="work-row">
+        <div class="work-name"><span class="num">03</span><span class="title">Field &amp; Co.</span></div>
+        <div class="work-tag"><span>Brand &amp; site</span><span class="arrow">↗</span></div>
+      </a>
+      <a href="#" class="work-row last">
+        <div class="work-name"><span class="num">04</span><span class="title">Meridian Travel</span></div>
+        <div class="work-tag"><span>Web platform</span><span class="arrow">↗</span></div>
+      </a>
+    </section>
+
+    <!-- ===== PROCESS ===== -->
+    <section class="process">
+      <div class="wrap process-inner">
+        <div class="process-label">How we work</div>
+        <h2 class="process-heading">A calm process, with no surprises.</h2>
+        <div class="process-grid">
+          <div class="process-step">
+            <div class="step-num">01</div>
+            <div class="step-title">Discover</div>
+            <p class="step-desc">We learn your business, users and constraints, and agree on what success looks like.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-num">02</div>
+            <div class="step-title">Design</div>
+            <p class="step-desc">Prototypes you can click, refined fast until the product feels right.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-num">03</div>
+            <div class="step-title">Build</div>
+            <p class="step-desc">Production engineering with weekly demos — you always see where it stands.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-num">04</div>
+            <div class="step-title">Launch</div>
+            <p class="step-desc">We ship, measure, and stay on to help it grow after day one.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <section class="stats">
+      <div class="wrap stats-grid">
+        <div class="stat">
+          <div class="stat-value">60+</div>
+          <div class="stat-label">Products shipped since 2019</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">4.9<span class="accent">/5</span></div>
+          <div class="stat-label">Average client rating</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">6 wk</div>
+          <div class="stat-label">From kickoff to typical launch</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA BAND ===== -->
+    <section class="cta-band">
+      <div class="wrap cta-inner">
+        <h2 class="cta-heading">Have something in mind? <span class="accent">Let's talk.</span></h2>
+        <a href="contact.html" class="cta-button">Start a project →</a>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <div>
+          <div class="footer-brand">BluDrop<span class="dot">.</span></div>
+          <p class="footer-desc">A digital product studio designing and building websites and mobile apps for ambitious teams.</p>
+          <a href="contact.html" class="footer-email">bludrop16@gmail.com</a>
+        </div>
+        <div>
+          <div class="footer-col-label">Studio</div>
+          <div class="footer-col-links">
+            <a href="#">Work</a>
+            <a href="#">Services</a>
+            <a href="#">About</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-label">Connect</div>
+          <div class="footer-col-links">
+            <a href="contact.html">Contact</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+      <div class="wrap footer-bottom">
+        <span>© 2026 BluDrop Innovation. All rights reserved.</span>
+        <span>Designed &amp; built in-house.</span>
+      </div>
+    </footer>
+
   </body>
 </html>
-
