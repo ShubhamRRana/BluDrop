@@ -215,15 +215,19 @@
 
       /* ===== SERVICES ===== */
       .services { border-top: 1px solid #1C232B; border-bottom: 1px solid #1C232B; }
+      .services > .wrap:first-child {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-block: 18px;
+      }
       .services-label {
-        padding: 28px 0 4px;
+        padding: 0;
         font-family: "Instrument Sans", sans-serif;
         font-size: 12px;
         letter-spacing: 0.16em;
         text-transform: uppercase;
         color: #8A93A0;
-        display: flex;
-        justify-content: center;
       }
       .services-grid {
         display: grid;
@@ -571,7 +575,7 @@
     <!-- ===== NAV ===== -->
     <header class="site-header">
       <nav class="wrap nav" id="site-nav">
-        <a href="index.html" class="brand-logo">BluDrop Innovations<span class="dot">.</span></a>
+        <a href="index.html" class="brand-logo">BluDrop Innovations<span class="dot"> .</span></a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
           <span class="nav-toggle-bar"></span>
           <span class="nav-toggle-bar"></span>
@@ -724,7 +728,7 @@
     <footer class="site-footer">
       <div class="wrap footer-grid">
         <div>
-          <div class="footer-brand">BluDrop Innovations<span class="dot">.</span></div>
+          <div class="footer-brand">BluDrop Innovations<span class="dot"> .</span></div>
           <p class="footer-desc">A digital product studio designing and building websites and mobile apps for ambitious teams.</p>
           <a href="contact.html" class="footer-email">bludrop16@gmail.com</a>
         </div>
