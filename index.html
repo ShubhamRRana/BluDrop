@@ -136,8 +136,8 @@
     <section class="stats">
       <div class="wrap stats-grid">
         <div class="stat">
-          <div class="stat-value">60+</div>
-          <div class="stat-label">Products shipped since 2019</div>
+          <div class="stat-value" id="products-shipped-count">2</div>
+          <div class="stat-label">Products shipped since 2026</div>
         </div>
         <div class="stat">
           <div class="stat-value">4.9<span class="accent">/5</span></div>
@@ -216,6 +216,25 @@
         document.addEventListener("click", function (e) {
           if (nav.classList.contains("is-open") && !nav.contains(e.target)) setOpen(false);
         });
+      })();
+
+      (function () {
+        var el = document.getElementById("products-shipped-count");
+        if (!el) return;
+
+        fetch("mobile_apps.html")
+          .then(function (res) {
+            if (!res.ok) throw new Error("fetch failed");
+            return res.text();
+          })
+          .then(function (html) {
+            var doc = new DOMParser().parseFromString(html, "text/html");
+            var count = doc.querySelectorAll(".app-card:not(.is-placeholder)").length;
+            el.textContent = String(count);
+          })
+          .catch(function () {
+            /* keep HTML fallback */
+          });
       })();
     </script>
   </body>
