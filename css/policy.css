@@ -1,0 +1,61 @@
+.policy-title {
+  margin: 0;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 600;
+  font-size: 60px;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  color: #E8EBEF;
+}
+.policy-title .accent { color: #6BA8FF; }
+.last-updated {
+  margin: 18px 0 0;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 14px;
+  color: #8A93A0;
+}
+
+/* ===== POLICY BODY ===== */
+.policy { padding: 56px 56px 96px; }
+.policy-content {
+  max-width: 760px;
+  border-top: 1px solid #2A3340;
+  padding-top: 48px;
+}
+.policy-content h2 {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 44px 0 14px;
+  color: #E8EBEF;
+}
+.policy-content h2:first-of-type { margin-top: 0; }
+.policy-content p,
+.policy-content li {
+  font-size: 16px;
+  line-height: 1.75;
+  color: #B7C0CC;
+  margin: 0 0 14px;
+}
+.policy-content ul { margin: 0 0 14px; padding-left: 1.25rem; }
+.policy-content li { margin-bottom: 8px; }
+.policy-content li::marker { color: #6BA8FF; }
+.policy-content a { color: #6BA8FF; }
+.policy-content a:hover { text-decoration: underline; }
+.policy-content strong { color: #E8EBEF; font-weight: 600; }
+
+@media (max-width: 900px) {
+  .policy {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .policy-title { font-size: 40px; }
+}
+
+@media (max-width: 480px) {
+  .policy {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

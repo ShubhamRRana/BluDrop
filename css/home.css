@@ -1,0 +1,225 @@
+/* ===== EDITORIAL STATEMENT ===== */
+.statement { padding: 72px 56px 96px; }
+.statement-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr;
+  gap: 72px;
+  align-items: start;
+}
+.statement-heading {
+  margin: 0;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 500;
+  font-size: 52px;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  color: #E8EBEF;
+  text-wrap: balance;
+}
+.statement-heading .accent { color: #6BA8FF; }
+.statement-body p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #B7C0CC;
+}
+.statement-link {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 26px;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #E8EBEF;
+  border-bottom: 1.5px solid #6BA8FF;
+  padding-bottom: 5px;
+  transition: color 0.18s ease;
+}
+.statement-link:hover { color: #6BA8FF; }
+
+/* ===== SERVICES ===== */
+.services { border-top: 1px solid #1C232B; border-bottom: 1px solid #1C232B; }
+.services > .wrap:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 18px;
+}
+.services-label {
+  padding: 0;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8A93A0;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid #1C232B;
+}
+.service-card {
+  display: block;
+  padding: 44px 40px 48px;
+  border-right: 1px solid #1C232B;
+  transition: background 0.18s ease;
+}
+.service-card:last-child { border-right: none; }
+.service-card:hover { background: #12181F; }
+.service-num { font-family: ui-monospace, monospace; font-size: 13px; color: #6BA8FF; }
+.service-title {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  margin-top: 18px;
+  color: #E8EBEF;
+}
+.service-desc { font-size: 15px; line-height: 1.6; color: #9AA3AE; margin: 12px 0 0; }
+
+/* ===== SELECTED WORK ===== */
+.work { padding: 96px 56px; }
+.work-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+.work-head h2 {
+  margin: 0;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 34px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #E8EBEF;
+}
+.work-all {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6BA8FF;
+  transition: color 0.18s ease;
+}
+.work-all:hover { color: #E8EBEF; }
+.work-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 0;
+  border-top: 1px solid #1C232B;
+  transition: padding-left 0.18s ease;
+}
+.work-row.first { border-top: 1px solid #2A3340; }
+.work-row.last { border-bottom: 1px solid #1C232B; }
+.work-row:hover { padding-left: 8px; }
+.work-name { display: flex; gap: 30px; align-items: baseline; }
+.work-name .num { font-family: ui-monospace, monospace; font-size: 13px; color: #6BA8FF; }
+.work-name .title {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+  color: #E8EBEF;
+}
+.work-tag { display: flex; gap: 40px; align-items: center; font-size: 14px; color: #9AA3AE; }
+.work-tag .arrow { color: #6BA8FF; }
+
+/* ===== PROCESS ===== */
+.process { border-top: 1px solid #1C232B; background: #0B0F14; }
+.process-inner { padding: 88px 56px; }
+.process-label {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8A93A0;
+}
+.process-heading {
+  margin: 14px 0 0;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: #E8EBEF;
+  max-width: 680px;
+  line-height: 1.05;
+}
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-top: 56px;
+}
+.process-step .step-num {
+  font-family: ui-monospace, monospace;
+  font-size: 13px;
+  color: #6BA8FF;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #2A3340;
+}
+.process-step .step-title {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 18px;
+  color: #E8EBEF;
+}
+.process-step .step-desc { font-size: 14px; line-height: 1.6; color: #9AA3AE; margin: 8px 0 0; }
+
+/* ===== STATS ===== */
+.stats { border-top: 1px solid #1C232B; }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+.stat { padding: 56px 40px; border-right: 1px solid #1C232B; }
+.stat:last-child { border-right: none; }
+.stat-value {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: #E8EBEF;
+}
+.stat-value .accent { color: #6BA8FF; }
+.stat-label { font-size: 14px; color: #9AA3AE; margin-top: 6px; }
+
+@media (max-width: 900px) {
+  .statement, .work, .process-inner {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .statement-grid { grid-template-columns: 1fr; gap: 32px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .service-card { border-right: none; border-bottom: 1px solid #1C232B; }
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat { border-right: none; border-bottom: 1px solid #1C232B; }
+  .statement-heading { font-size: 38px; }
+}
+
+@media (max-width: 768px) {
+  .statement { padding: 56px 20px 64px; }
+  .statement-heading { font-size: clamp(28px, 7vw, 40px); }
+  .work { padding: 64px 20px; }
+  .work-head { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .work-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .work-name { gap: 16px; }
+  .work-name .title { font-size: 22px; }
+  .work-tag { gap: 16px; }
+  .process-inner { padding: 64px 20px; }
+  .process-grid { grid-template-columns: 1fr; }
+  .process-heading { font-size: clamp(26px, 6vw, 34px); }
+  .stat { padding: 40px 20px; }
+  .stat-value { font-size: 42px; }
+}
+
+@media (max-width: 480px) {
+  .statement, .work, .process-inner {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .service-card { padding: 32px 20px; }
+  .statement { padding: 48px 16px 48px; }
+  .work { padding: 48px 16px; }
+}
