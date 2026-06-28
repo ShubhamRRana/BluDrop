@@ -1,0 +1,105 @@
+.strategy-title {
+  margin: 0;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 600;
+  font-size: 56px;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: #E8EBEF;
+  text-wrap: balance;
+  max-width: 720px;
+}
+.strategy-title .accent { color: #6BA8FF; }
+.strategy-intro {
+  margin: 22px 0 0;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #B7C0CC;
+  max-width: 620px;
+}
+
+/* ===== PLATFORM SECTIONS ===== */
+.platforms { padding: 16px 56px 96px; }
+.platform-block + .platform-block { margin-top: 56px; }
+.platform-label {
+  padding: 0 0 20px;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8A93A0;
+}
+
+.apps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  border-top: 1px solid #1C232B;
+  border-left: 1px solid #1C232B;
+}
+.app-card {
+  display: block;
+  padding: 40px;
+  border-right: 1px solid #1C232B;
+  border-bottom: 1px solid #1C232B;
+  transition: background 0.18s ease;
+}
+.app-card:hover { background: #12181F; }
+.app-num { font-family: ui-monospace, monospace; font-size: 13px; color: #6BA8FF; }
+.app-title {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  margin-top: 16px;
+  color: #E8EBEF;
+}
+.app-desc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #9AA3AE;
+  margin: 12px 0 0;
+  max-width: 440px;
+}
+.app-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6BA8FF;
+}
+
+/* iOS placeholder */
+.app-card.is-placeholder {
+  cursor: default;
+  opacity: 0.55;
+}
+.app-card.is-placeholder:hover { background: transparent; }
+.app-card.is-placeholder .app-num { color: #5A6270; }
+
+/* Mobile-apps page CTA overrides */
+.mobile-apps-page .cta-inner { padding: 88px 56px; }
+.mobile-apps-page .cta-heading {
+  font-size: 44px;
+  max-width: 560px;
+  line-height: 1.05;
+}
+
+@media (max-width: 900px) {
+  .platforms {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .strategy-title { font-size: 40px; }
+  .apps-grid { grid-template-columns: 1fr; }
+  .mobile-apps-page .cta-heading { font-size: 34px; }
+}
+
+@media (max-width: 480px) {
+  .platforms {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .app-card { padding: 28px 20px; }
+}
