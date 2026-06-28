@@ -77,52 +77,6 @@
 }
 .service-desc { font-size: 15px; line-height: 1.6; color: #9AA3AE; margin: 12px 0 0; }
 
-/* ===== SELECTED WORK ===== */
-.work { padding: 96px 56px; }
-.work-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 8px;
-}
-.work-head h2 {
-  margin: 0;
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-size: 34px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: #E8EBEF;
-}
-.work-all {
-  font-family: "Instrument Sans", sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: #6BA8FF;
-  transition: color 0.18s ease;
-}
-.work-all:hover { color: #E8EBEF; }
-.work-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 28px 0;
-  border-top: 1px solid #1C232B;
-  transition: padding-left 0.18s ease;
-}
-.work-row.first { border-top: 1px solid #2A3340; }
-.work-row.last { border-bottom: 1px solid #1C232B; }
-.work-row:hover { padding-left: 8px; }
-.work-name { display: flex; gap: 30px; align-items: baseline; }
-.work-name .num { font-family: ui-monospace, monospace; font-size: 13px; color: #6BA8FF; }
-.work-name .title {
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-size: 30px;
-  font-weight: 500;
-  color: #E8EBEF;
-}
-.work-tag { display: flex; gap: 40px; align-items: center; font-size: 14px; color: #9AA3AE; }
-.work-tag .arrow { color: #6BA8FF; }
-
 /* ===== PROCESS ===== */
 .process { border-top: 1px solid #1C232B; background: #0B0F14; }
 .process-inner { padding: 88px 56px; }
@@ -181,7 +135,7 @@
 .stat-label { font-size: 14px; color: #9AA3AE; margin-top: 6px; }
 
 @media (max-width: 900px) {
-  .statement, .work, .process-inner {
+  .statement, .process-inner {
     padding-left: 24px;
     padding-right: 24px;
   }
@@ -197,16 +151,6 @@
 @media (max-width: 768px) {
   .statement { padding: 56px 20px 64px; }
   .statement-heading { font-size: clamp(28px, 7vw, 40px); }
-  .work { padding: 64px 20px; }
-  .work-head { flex-direction: column; align-items: flex-start; gap: 8px; }
-  .work-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-  .work-name { gap: 16px; }
-  .work-name .title { font-size: 22px; }
-  .work-tag { gap: 16px; }
   .process-inner { padding: 64px 20px; }
   .process-grid { grid-template-columns: 1fr; }
   .process-heading { font-size: clamp(26px, 6vw, 34px); }
@@ -215,11 +159,10 @@
 }
 
 @media (max-width: 480px) {
-  .statement, .work, .process-inner {
+  .statement, .process-inner {
     padding-left: 16px;
     padding-right: 16px;
   }
   .service-card { padding: 32px 20px; }
   .statement { padding: 48px 16px 48px; }
-  .work { padding: 48px 16px; }
 }
