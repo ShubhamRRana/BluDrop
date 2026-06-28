@@ -109,72 +109,8 @@
       .nav.is-open .nav-toggle-bar:nth-child(2) { opacity: 0; }
       .nav.is-open .nav-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-      /* ===== HERO ===== */
-      .hero { padding: 64px 56px 0; }
-      .hero-meta {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        font-family: "Instrument Sans", sans-serif;
-        font-size: 12px;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: #8A93A0;
-        margin-bottom: 20px;
-      }
-      .hero-card {
-        display: block;
-        height: 520px;
-        border-radius: 8px;
-        background: #161C24;
-        position: relative;
-        overflow: hidden;
-      }
-      .hero-glow {
-        position: absolute;
-        inset: 0;
-        background-image: radial-gradient(circle at 80% 26%, rgba(43, 87, 230, .5), transparent 48%);
-      }
-      .hero-orb {
-        position: absolute;
-        right: 64px;
-        top: 46%;
-        transform: translateY(-50%) rotate(45deg);
-        width: 230px;
-        height: 230px;
-        background: linear-gradient(150deg, #2B57E6, #6BA8FF);
-        border-radius: 50% 50% 50% 30px;
-        box-shadow: 0 40px 90px rgba(43, 87, 230, .45);
-      }
-      .hero-copy { position: absolute; left: 48px; bottom: 44px; right: 48px; }
-      .hero-title {
-        font-family: "Bricolage Grotesque", sans-serif;
-        font-size: 60px;
-        font-weight: 600;
-        color: #fff;
-        letter-spacing: -0.03em;
-        line-height: 0.98;
-      }
-      .hero-desc {
-        font-size: 18px;
-        color: #C3CBD6;
-        margin-top: 14px;
-        max-width: 520px;
-        line-height: 1.5;
-      }
-      .hero-link {
-        display: inline-flex;
-        gap: 8px;
-        align-items: center;
-        margin-top: 22px;
-        font-family: "Instrument Sans", sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-        color: #6BA8FF;
-      }
-
       /* ===== EDITORIAL STATEMENT ===== */
-      .statement { padding: 96px 56px; }
+      .statement { padding: 72px 56px 96px; }
       .statement-grid {
         display: grid;
         grid-template-columns: 1.35fr 0.85fr;
@@ -445,7 +381,7 @@
 
       @media (max-width: 900px) {
         .nav { padding: 16px 24px; }
-        .hero, .statement, .work, .process-inner, .cta-inner, .footer-grid, .footer-bottom {
+        .statement, .work, .process-inner, .cta-inner, .footer-grid, .footer-bottom {
           padding-left: 24px;
           padding-right: 24px;
         }
@@ -456,7 +392,7 @@
         .stats-grid { grid-template-columns: 1fr; }
         .stat { border-right: none; border-bottom: 1px solid #1C232B; }
         .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-        .hero-title, .statement-heading, .cta-heading { font-size: 38px; }
+        .statement-heading, .cta-heading { font-size: 38px; }
       }
 
       @media (max-width: 768px) {
@@ -494,36 +430,7 @@
           border-top: 1px solid #1C232B;
           padding-top: 20px;
         }
-        .hero { padding: 40px 20px 0; }
-        .hero-meta { flex-direction: column; gap: 6px; align-items: flex-start; }
-        .hero-card {
-          height: auto;
-          display: flex;
-          flex-direction: column;
-          min-height: unset;
-          padding: 0;
-        }
-        .hero-orb {
-          position: relative;
-          right: auto;
-          top: auto;
-          transform: rotate(45deg);
-          align-self: flex-end;
-          width: 140px;
-          height: 140px;
-          margin: 24px 24px 0;
-          flex-shrink: 0;
-        }
-        .hero-copy {
-          position: relative;
-          left: auto;
-          bottom: auto;
-          right: auto;
-          padding: 24px;
-        }
-        .hero-title { font-size: clamp(28px, 7vw, 38px); }
-        .hero-desc { font-size: 16px; }
-        .statement { padding: 64px 20px; }
+        .statement { padding: 56px 20px 64px; }
         .statement-heading { font-size: clamp(28px, 7vw, 40px); }
         .work { padding: 64px 20px; }
         .work-head { flex-direction: column; align-items: flex-start; gap: 8px; }
@@ -556,16 +463,12 @@
 
       @media (max-width: 480px) {
         .nav { padding: 14px 16px; }
-        .hero, .statement, .work, .process-inner, .cta-inner, .footer-grid, .footer-bottom {
+        .statement, .work, .process-inner, .cta-inner, .footer-grid, .footer-bottom {
           padding-left: 16px;
           padding-right: 16px;
         }
-        .hero { padding-top: 32px; }
-        .hero-orb { width: 100px; height: 100px; margin: 20px 16px 0; }
-        .hero-copy { padding: 20px 16px; }
-        .hero-title { font-size: clamp(28px, 8vw, 34px); }
         .service-card { padding: 32px 20px; }
-        .statement { padding: 48px 16px; }
+        .statement { padding: 48px 16px 48px; }
         .work { padding: 48px 16px; }
       }
     </style>
@@ -590,23 +493,6 @@
         </div>
       </nav>
     </header>
-
-    <!-- ===== HERO / FEATURED CASE ===== -->
-    <section class="wrap hero">
-      <div class="hero-meta">
-        <span>Featured — 01</span>
-        <span>Web platform · 2025</span>
-      </div>
-      <a href="#" class="hero-card">
-        <div class="hero-glow"></div>
-        <div class="hero-orb"></div>
-        <div class="hero-copy">
-          <div class="hero-title">Northwind Bank</div>
-          <div class="hero-desc">A 1,200-page banking platform, rebuilt into one calm, legible product that customers actually understand.</div>
-          <div class="hero-link">View case study →</div>
-        </div>
-      </a>
-    </section>
 
     <!-- ===== EDITORIAL STATEMENT ===== -->
     <section class="wrap statement">
