@@ -37,13 +37,29 @@ The page is completely static, so no additional configuration is required.
 3. Click **Deploy** and wait for Vercel to finish building.
 4. Copy the generated URL to share the live BluDrop landing page.
 
+### Contact form environment variables
+
+The contact page (`contact.html`) posts to `/api/contact`, a Vercel serverless function that sends mail via [Resend](https://resend.com). Set these in **Vercel → Project → Settings → Environment Variables** (Production and Preview):
+
+| Variable | Example | Purpose |
+|---|---|---|
+| `RESEND_API_KEY` | `re_...` | API key from the [Resend dashboard](https://resend.com/api-keys) |
+| `CONTACT_FROM_EMAIL` | `BluDrop <hello@bludrop.in>` | Verified sender address (must match a domain verified in Resend) |
+| `CONTACT_TO_EMAIL` | `bludrop16@gmail.com` | Inbox that receives contact form submissions |
+
+**Resend domain setup:** Add and verify `bludrop.in` under [Resend → Domains](https://resend.com/domains) (SPF/DKIM DNS records at your registrar). Until the domain is verified, Resend only allows sending to the email address that owns the Resend account.
+
+After changing environment variables, redeploy the project so the serverless function picks up the new values.
+
 ---
 
 ## Project structure
 
 - `index.html` – Main landing page, layout, and styles.
+- `contact.html` – Contact page with form wired to `/api/contact`.
+- `api/contact.js` – Vercel serverless handler that sends email via Resend.
 - `bludrop-logo.png` – BluDrop brand logo used in the header.
-- `package.json` – Optional metadata and helper scripts for local preview.
+- `package.json` – Metadata, Resend dependency, and helper scripts for local preview.
 
 ---
 

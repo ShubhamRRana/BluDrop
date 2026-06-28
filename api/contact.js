@@ -77,7 +77,7 @@ module.exports = async (req, res) => {
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: process.env.CONTACT_FROM_EMAIL,
       to: toEmail,
       replyTo: email,
@@ -85,7 +85,12 @@ module.exports = async (req, res) => {
       text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
     });
 
-    return res.status(200).json({ ok: true });
+    if (error) {
+      console.error("Resend error:", error);
+      return res.status(500).json({ error: "Failed to send your message. Please try again later." });
+    }
+
+    return res.status(200).json({ ok: true, id: data?.id });
   } catch (error) {
     console.error("Failed to send contact email:", error);
     return res.status(500).json({ error: "Failed to send your message. Please try again later." });
